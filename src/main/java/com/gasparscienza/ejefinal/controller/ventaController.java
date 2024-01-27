@@ -28,9 +28,6 @@ public class ventaController {
     @GetMapping("/ventas")
     public List<venta> getVenta(){
        List<venta> listVenta = iVS.getVentas();
-       for(venta v : listVenta){
-           v.setTotal(iVS.calTotVent(v));
-       }
        return listVenta;
     }
     @GetMapping("/ventas/productos/{codigo_venta}")

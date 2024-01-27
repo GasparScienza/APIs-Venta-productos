@@ -21,7 +21,11 @@ public class ventaService implements iVentaService{
 
     @Override
     public List<venta> getVentas() {
-        return iVR.findAll();
+        List<venta> lisVent = iVR.findAll();
+        for(venta v : lisVent){
+           v.setTotal(this.calTotVent(v));
+       }
+        return lisVent;
     }
 
     @Override
@@ -37,7 +41,6 @@ public class ventaService implements iVentaService{
     @Override
     public void editVenta(Long id, LocalDate fecha, Double total, List<producto> listaProductos, cliente unCliente) {        
         venta vent = this.findVenta(id);
-        
         if (fecha != null) {
             vent.setFecha_venta(fecha);
         }
@@ -62,10 +65,8 @@ public class ventaService implements iVentaService{
                 if(prod != null && prod.getCosto() != null){
                     tot += prod.getCosto();
                 }
-            
             }
         }
-        
         return tot;
     }
 
@@ -75,3 +76,4 @@ public class ventaService implements iVentaService{
         return ven.getListaProductos();
     }
 }
+//traer todas las ventas de un cliente
