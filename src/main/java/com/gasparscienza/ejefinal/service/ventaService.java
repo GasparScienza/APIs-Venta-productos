@@ -77,5 +77,11 @@ public class ventaService implements iVentaService{
         venta ven = iVR.findById(id).orElse(null);
         return ven.getListaProductos();
     }
+
+    @Override
+    public List<venta> findVentaFecha(LocalDate fecha) {
+        List<venta> listVent = iVR.findVentasByFecha(fecha);
+        return listVent;
+    }
 }
 //traer todas las ventas de un cliente

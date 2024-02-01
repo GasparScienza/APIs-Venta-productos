@@ -40,6 +40,11 @@ public class ventaController {
         return iVS.findVenta(codigo_venta);
     }
     
+    @GetMapping("/ventasf/{fecha_venta}")
+    public List<venta> findVentaFecha(@PathVariable LocalDate fecha_venta){
+        return iVS.findVentaFecha(fecha_venta);
+    }
+    
     
     @DeleteMapping("/ventas/eliminar/{codigo_venta}")
     public String deletVenta(@PathVariable Long codigo_venta){
