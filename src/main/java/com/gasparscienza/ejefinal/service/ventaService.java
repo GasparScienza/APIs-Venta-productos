@@ -79,9 +79,13 @@ public class ventaService implements iVentaService{
     }
 
     @Override
-    public List<venta> findVentaFecha(LocalDate fecha) {
+    public String findVentaFecha(LocalDate fecha) {
+        Double total = 0.0;
         List<venta> listVent = iVR.findVentasByFecha(fecha);
-        return listVent;
+        for(venta v : listVent){
+            total += v.getTotal();
+        }
+        return "Cantidad de ventas: " + listVent.size() + " Monto total del dia: " + total;
     }
 }
 //traer todas las ventas de un cliente

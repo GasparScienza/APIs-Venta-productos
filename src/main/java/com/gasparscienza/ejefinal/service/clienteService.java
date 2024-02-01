@@ -1,5 +1,6 @@
 package com.gasparscienza.ejefinal.service;
 import com.gasparscienza.ejefinal.model.cliente;
+import com.gasparscienza.ejefinal.model.venta;
 import com.gasparscienza.ejefinal.repository.iClienteRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,12 @@ public class clienteService implements iClienteService{
         client.setDni(dni);
         client.setNombre(nombre);
         this.addCliente(client);
+    }
+
+    @Override
+    public List<venta> findVentasByCliente(Long id) {
+        cliente c = iCR.findById(id).orElse(null);
+        return c.getVent();
     }
     
     

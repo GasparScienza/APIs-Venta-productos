@@ -1,4 +1,5 @@
 package com.gasparscienza.ejefinal.model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -7,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.time.LocalDate;
@@ -25,7 +27,8 @@ public class venta {
     private Double total;
     @OneToMany
     private List<producto> listaProductos;
-    @OneToOne
-    @JoinColumn(name = "cliente", referencedColumnName = "id_cliente")
+    @ManyToOne
+    @JoinColumn(name = "id_cliente")
+    @JsonBackReference
     private cliente unCliente; 
 }

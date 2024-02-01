@@ -1,6 +1,7 @@
 package com.gasparscienza.ejefinal.controller;
 import com.gasparscienza.ejefinal.model.cliente;
 import com.gasparscienza.ejefinal.model.producto;
+import com.gasparscienza.ejefinal.model.venta;
 import com.gasparscienza.ejefinal.service.iClienteService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,4 +46,9 @@ public class clienteController {
         iCS.editCliente(id_cliente, nNombre, nApellido, nDni);
         return iCS.findCliente(id_cliente);
     }
+    @GetMapping("/clientes/ventas/{id_cliente}")
+    public List<venta> findVentas(@PathVariable Long id_cliente){
+        return iCS.findVentasByCliente(id_cliente);
+    }
+    
 }

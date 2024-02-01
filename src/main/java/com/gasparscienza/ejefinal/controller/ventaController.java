@@ -27,8 +27,8 @@ public class ventaController {
     }
     @GetMapping("/ventas")
     public List<venta> getVenta(){
-       List<venta> listVenta = iVS.getVentas();
-       return listVenta;
+       return iVS.getVentas();
+       
     }
     @GetMapping("/ventas/productos/{codigo_venta}")
     public List<producto> findVentaProd(@PathVariable Long codigo_venta){
@@ -41,7 +41,7 @@ public class ventaController {
     }
     
     @GetMapping("/ventasf/{fecha_venta}")
-    public List<venta> findVentaFecha(@PathVariable LocalDate fecha_venta){
+    public String findVentaFecha(@PathVariable LocalDate fecha_venta){
         return iVS.findVentaFecha(fecha_venta);
     }
     
