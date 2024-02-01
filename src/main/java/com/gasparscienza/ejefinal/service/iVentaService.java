@@ -11,6 +11,6 @@ public interface iVentaService {
     public void deleteVenta(Long id);
     public venta findVenta(Long id);
     public void editVenta(Long id, LocalDate fecha, Double total, List<producto> listaProductos, cliente unCliente);
-    public double calTotVent(venta vent);
+    public void calTotVent(venta vent);
     public List<producto> findVentaProd(Long id);
 }

@@ -4,6 +4,7 @@ import com.gasparscienza.ejefinal.model.producto;
 import com.gasparscienza.ejefinal.model.venta;
 import com.gasparscienza.ejefinal.repository.iVentaRepository;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,18 +14,16 @@ public class ventaService implements iVentaService{
     
     @Autowired
     private iVentaRepository iVR;
-
+            
     @Override
     public void addVenta(venta vent) {
+        this.calTotVent(vent);
         iVR.save(vent);
     }
 
     @Override
     public List<venta> getVentas() {
         List<venta> lisVent = iVR.findAll();
-        for(venta v : lisVent){
-           v.setTotal(this.calTotVent(v));
-       }
         return lisVent;
     }
 
@@ -57,19 +56,22 @@ public class ventaService implements iVentaService{
     }
 
     @Override
-    public double calTotVent(venta vent) {
+    public void calTotVent(venta vent) {
         Double tot = 0.0;
         List<producto> listProd = vent.getListaProductos();
-        if(listProd != null){
-            for(producto prod : listProd){
-                if(prod != null && prod.getCosto() != null){
-                    tot += prod.getCosto();
+
+        if (listProd != null) {
+            for (producto prod : listProd) {
+                // Utilizar el repositorio de ventas para obtener el costo del producto
+                Double costo = iVR.findProductCostByProductId(prod.getCodigo_producto());
+                if (costo != null) {
+                    tot += costo;
                 }
             }
         }
-        return tot;
+        vent.setTotal(tot);
     }
-
+    
     @Override
     public List<producto> findVentaProd(Long id) {
         venta ven = iVR.findById(id).orElse(null);

@@ -16,5 +16,5 @@ public class producto {
     private String nombre;
     private String marca;
     private Double costo;
-    private Double cantidad_disponible;
+    private Double cantidad_disponible;  
 }
