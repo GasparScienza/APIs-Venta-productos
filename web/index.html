@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Agregar Productos</title>
+</head>
+<body>
+    <div class="formulario">
+        <form method="POST">
+            <div>
+                <div>
+                    <label for="nombre">Nombre:</label>
+                    <input id="nombre" name="nombre" type="text">
+                </div>
+                <div>
+                    <label for="marca">Marca:</label>
+                    <input id="marca" name="marca" type="text">
+                </div>
+                <div>
+                    <label for="costo">Costo:</label>
+                    <input id="costo" name="costo" type="number">
+                </div>
+                <div>
+                    <label for="cantidad_disponible">Cantidad:</label>
+                    <input id="cantidad_disponible" name="cantidad_disponible" type="number">
+                </div>
+                <div>
+                    <button id="btnReg">Guardar Producto</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="form.js"></script>
+</body>
+</html>
