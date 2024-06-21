@@ -1,16 +1,12 @@
 package com.gasparscienza.ejefinal.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import java.time.LocalDate;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -30,5 +26,37 @@ public class venta {
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     @JsonBackReference
-    private cliente unCliente; 
+    private cliente unCliente;
+	public Long getCodigo_venta() {
+		return codigo_venta;
+	}
+	public void setCodigo_venta(Long codigo_venta) {
+		this.codigo_venta = codigo_venta;
+	}
+	public LocalDate getFecha_venta() {
+		return fecha_venta;
+	}
+	public void setFecha_venta(LocalDate fecha_venta) {
+		this.fecha_venta = fecha_venta;
+	}
+	public Double getTotal() {
+		return total;
+	}
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+	public List<producto> getListaProductos() {
+		return listaProductos;
+	}
+	public void setListaProductos(List<producto> listaProductos) {
+		this.listaProductos = listaProductos;
+	}
+	public cliente getUnCliente() {
+		return unCliente;
+	}
+	public void setUnCliente(cliente unCliente) {
+		this.unCliente = unCliente;
+	} 
+    
+    
 }

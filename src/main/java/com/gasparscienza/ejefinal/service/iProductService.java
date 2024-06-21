@@ -9,6 +9,6 @@ public interface iProductService {
     public List<producto> getProduct();
     public void deleteProduct(Long id);
     public producto findProduct(Long id);
-    public void editProduct(Long id, String nombre, String marca, Double costo, Double cantDisp);
+    public void editProduct(Long id, producto prod);
     public List<producto> getProdStock();
 }

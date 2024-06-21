@@ -33,12 +33,12 @@ public class productService implements iProductService{
     }
 
     @Override
-    public void editProduct(Long id, String nombre, String marca, Double costo, Double cantDisp) {
+    public void editProduct(Long id, producto producto) {
         producto prod = this.findProduct(id);       
-        prod.setCantidad_disponible(cantDisp);
-        prod.setNombre(nombre);
-        prod.setMarca(marca);
-        prod.setCosto(costo);
+        prod.setCantidad_disponible(producto.getCantidad_disponible());
+        prod.setNombre(producto.getNombre());
+        prod.setMarca(producto.getMarca());
+        prod.setCosto(producto.getCosto());
         this.addProduct(prod);
     }
 
